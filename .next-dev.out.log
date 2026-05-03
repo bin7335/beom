@@ -1,0 +1,14 @@
+
+> beom@0.1.0 dev
+> next dev
+
+▲ Next.js 16.2.4 (Turbopack)
+- Local:         http://localhost:3000
+- Network:       http://192.168.219.112:3000
+✓ Ready in 1867ms
+Creating turbopack project { dir: 'D:\\dev\\beom', testMode: true }
+
+○ Compiling / ...
+ GET / 200 in 5.3s (next.js: 4.7s, application-code: 656ms)
+ GET / 200 in 183ms (next.js: 20ms, application-code: 163ms)
+ GET / 200 in 180ms (next.js: 23ms, application-code: 158ms)
