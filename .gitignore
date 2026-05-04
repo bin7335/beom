@@ -47,6 +47,7 @@ next-env.d.ts
 # Data files (큰 원본은 git 제외)
 data/raw/*
 !data/raw/.gitkeep
+!data/raw/neis_schools_경북초등.json
 data/processed/*
 !data/processed/.gitkeep
 data/clean/*
