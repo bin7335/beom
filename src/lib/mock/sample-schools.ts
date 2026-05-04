@@ -1,13 +1,5 @@
-import type { SchoolResult, AllTopicsIntensity } from "@/lib/types";
+import type { AllTopicsIntensity, SchoolResult } from "@/lib/types";
 
-// ============================================================
-// 교육해범 mock 데이터 v0.3
-// ============================================================
-// 변경: 10개 주제 → 17개 추천 단위로 재작성
-// 출처: 2023학년도 범교과 학습 주제 편성·운영안 (교육부)
-// ============================================================
-
-// 17개 항목 기본 강도 (1=낮음, 5=높음)
 const baselineIntensity: AllTopicsIntensity = {
   "safety-education": 3,
   "sex-education": 3,
@@ -28,16 +20,12 @@ const baselineIntensity: AllTopicsIntensity = {
   "environment-education": 3,
 };
 
-// ============================================================
-// 샘플 1: 도시형 학교 (포항제철초등학교)
-// 특징: 인근 교통사고 多, 다문화 비율 높음, 학교폭력 신고 평균 이상
-// ============================================================
 export const sampleUrban: SchoolResult = {
   school: {
     code: "sample-urban",
     name: "포항제철초등학교 (예시)",
     address: "경상북도 포항시 남구 효자동",
-    lat: 36.0190,
+    lat: 36.019,
     lng: 129.3435,
     studentCount: 612,
     classCount: 24,
@@ -61,41 +49,41 @@ export const sampleUrban: SchoolResult = {
         topicId: "safety-education",
         rank: 1,
         intensity: 5,
-        evidence: "인근 교통사고 발생률이 경북 평균 대비 47% 높음 (3년간 18건)",
+        evidence: "인근 교통사고 발생률이 경북 평균 대비 47% 높습니다. (3년간 18건)",
         evidenceData: { value: 18, baseline: 12.2 },
-        hoursRecommendation: "51시간 유지하되 교통안전 비중 강화 권장",
+        hoursRecommendation: "51시간은 유지하되 교통안전 비중을 강화하는 편이 적절합니다.",
       },
       {
         topicId: "multicultural-education",
         rank: 2,
         intensity: 4,
-        evidence: "다문화 가정 비율 8.2%로 경북 평균 대비 +3.1%p",
+        evidence: "다문화 학생 비율이 8.2%로 경북 평균 대비 3.1%p 높습니다.",
         evidenceData: { value: 0.082, baseline: 0.051 },
-        hoursRecommendation: "기준 2시간 → 4시간 (+2시간)",
+        hoursRecommendation: "기준 2시간에서 4시간 수준으로 확대를 권장합니다.",
       },
       {
         topicId: "school-violence-prevention",
         rank: 3,
         intensity: 4,
-        evidence: "학교폭력 지수 경북 평균 대비 +21% (사이버 비중 증가 추세)",
+        evidence: "학교폭력 지수가 경북 평균 대비 약 21% 높고, 사이버폭력 대응 필요가 있습니다.",
         evidenceData: { value: 0.034, baseline: 0.028 },
-        hoursRecommendation: "11시간 유지 + 사이버폭력 예방 비중 확대",
+        hoursRecommendation: "11시간 기본 운영에 더해 사이버폭력 예방 비중 확대를 권장합니다.",
       },
       {
         topicId: "health-education",
         rank: 4,
         intensity: 3,
-        evidence: "도시형 대형 학교 — 표준 보건교육 운영 권장",
+        evidence: "학생 수가 많은 도시형 학교라 표준 보건교육 운영의 필요성이 높습니다.",
         evidenceData: { value: 612, baseline: 350 },
-        hoursRecommendation: "기준 17시간 운영",
+        hoursRecommendation: "기준 17시간을 안정적으로 운영하는 편이 좋습니다.",
       },
       {
         topicId: "career-education",
         rank: 5,
         intensity: 3,
-        evidence: "포항 산업단지 인근 — 진로 다양성 노출 기회 활용",
+        evidence: "포항 산업단지 인근 입지를 활용하면 다양한 진로 노출 기회를 만들 수 있습니다.",
         evidenceData: { value: 612, baseline: 350 },
-        hoursRecommendation: "지역 산업 연계 진로교육 권장",
+        hoursRecommendation: "지역 산업 연계 진로교육 프로그램 운영을 권장합니다.",
       },
     ],
     allTopicsIntensity: {
@@ -112,10 +100,6 @@ export const sampleUrban: SchoolResult = {
   generatedAt: "2026-05-04T20:00:00+09:00",
 };
 
-// ============================================================
-// 샘플 2: 농어촌 소규모 학교 (영양분교)
-// 특징: 다문화 매우 높음, 교통사고 적음, 자연환경 풍부
-// ============================================================
 export const sampleRural: SchoolResult = {
   school: {
     code: "sample-rural",
@@ -145,41 +129,41 @@ export const sampleRural: SchoolResult = {
         topicId: "multicultural-education",
         rank: 1,
         intensity: 5,
-        evidence: "다문화 가정 비율 12.5%로 경북 평균의 2.4배",
+        evidence: "다문화 학생 비율이 12.5%로 경북 평균의 약 2.4배입니다.",
         evidenceData: { value: 0.125, baseline: 0.051 },
-        hoursRecommendation: "기준 2시간 → 6시간 (+4시간), 학교 자율시간 활용",
+        hoursRecommendation: "기준 2시간에서 6시간 수준까지 확대를 권장합니다.",
       },
       {
         topicId: "environment-education",
         rank: 2,
         intensity: 4,
-        evidence: "농어촌 자연환경 — 생태감수성 증진 위한 체험 중심 교육 적합",
+        evidence: "농어촌 자연환경을 활용한 생태 체험 중심 수업 운영에 유리합니다.",
         evidenceData: { value: 1, baseline: 1 },
-        hoursRecommendation: "환경교육주간 연계 + 학교자율시간 활용 권장",
+        hoursRecommendation: "환경교육주간과 학교자율시간을 연계해 운영하는 편이 좋습니다.",
       },
       {
         topicId: "career-education",
         rank: 3,
         intensity: 4,
-        evidence: "소규모 학교 — 진로 다양성 노출 기회 보강 필요 (학생 24명)",
+        evidence: "소규모 학교라 진로 다양성 노출 기회를 의도적으로 보강할 필요가 있습니다.",
         evidenceData: { value: 24, baseline: 350 },
-        hoursRecommendation: "외부 진로체험 프로그램 적극 활용 권장",
+        hoursRecommendation: "외부 진로체험 프로그램을 적극 활용하는 방향을 권장합니다.",
       },
       {
         topicId: "safety-education",
         rank: 4,
         intensity: 2,
-        evidence: "인근 교통사고 평균 이하 — 표준 시수 유지 적정",
+        evidence: "교통사고 수치는 평균 이하이지만 농어촌 특성을 반영한 안전교육은 필요합니다.",
         evidenceData: { value: 2, baseline: 12.2 },
-        hoursRecommendation: "51시간 표준 운영, 농어촌 안전 요소(농기계 등) 반영",
+        hoursRecommendation: "51시간 표준 운영을 유지하되 농기계 등 지역 위험요소를 반영하면 좋습니다.",
       },
       {
         topicId: "character-education",
         rank: 5,
         intensity: 3,
-        evidence: "소규모 학교 — 학년 통합 인성교육 효과적",
+        evidence: "소규모 학교는 학년 통합형 인성교육 운영 효과를 기대할 수 있습니다.",
         evidenceData: { value: 6, baseline: 18 },
-        hoursRecommendation: "도덕·창체 통합 운영 권장",
+        hoursRecommendation: "도덕과 창체를 연계한 통합 운영을 권장합니다.",
       },
     ],
     allTopicsIntensity: {
@@ -190,16 +174,12 @@ export const sampleRural: SchoolResult = {
       "safety-education": 2,
       "character-education": 3,
       "school-violence-prevention": 2,
-      "internet-addiction-education": 4, // 소규모 농어촌도 인터넷 의존 높음
+      "internet-addiction-education": 4,
     },
   },
   generatedAt: "2026-05-04T20:00:00+09:00",
 };
 
-// ============================================================
-// 샘플 3: 표준 도시 학교 (구미중앙초등학교)
-// 특징: 모든 지표 경북 평균 수준, 표준 운영 적합
-// ============================================================
 export const sampleStandard: SchoolResult = {
   school: {
     code: "sample-standard",
@@ -229,41 +209,41 @@ export const sampleStandard: SchoolResult = {
         topicId: "dokdo-education",
         rank: 1,
         intensity: 4,
-        evidence: "경상북도 소재 — 독도교육 강화 권장 (시도 정책 연계)",
+        evidence: "경상북도 소재 학교 특성을 살려 독도교육을 강조하기 좋습니다.",
         evidenceData: { value: 1, baseline: 1 },
-        hoursRecommendation: "독도교육주간 연계 10시간 이상 권장",
+        hoursRecommendation: "독도교육주간과 연계해 10시간 이상 심화 운영을 권장합니다.",
       },
       {
         topicId: "career-education",
         rank: 2,
         intensity: 3,
-        evidence: "구미 산업단지 인근 — 다양한 진로 탐색 기회 활용",
+        evidence: "구미 산업 인프라를 활용하면 진로 탐색 프로그램 구성이 수월합니다.",
         evidenceData: { value: 380, baseline: 350 },
-        hoursRecommendation: "지역 산업 연계 진로 프로그램 권장",
+        hoursRecommendation: "지역 산업 연계 진로 프로그램 운영을 권장합니다.",
       },
       {
         topicId: "safety-education",
         rank: 3,
         intensity: 3,
-        evidence: "인근 교통사고 경북 평균 수준 — 표준 시수 적정",
+        evidence: "교통안전 지표가 평균 수준이므로 표준 운영을 유지하면 됩니다.",
         evidenceData: { value: 11, baseline: 12.2 },
-        hoursRecommendation: "기준 51시간 표준 운영",
+        hoursRecommendation: "기준 51시간 표준 운영을 유지하는 편이 적절합니다.",
       },
       {
         topicId: "democratic-citizen-education",
         rank: 4,
         intensity: 3,
-        evidence: "도시형 평균 학교 — 시민의식 함양 표준 운영",
+        evidence: "도시형 평균 학교로 민주시민 역량을 균형 있게 다루기 좋습니다.",
         evidenceData: { value: 380, baseline: 350 },
-        hoursRecommendation: "사회·도덕 교과 연계 운영 권장",
+        hoursRecommendation: "사회와 도덕 교과를 연계한 운영을 권장합니다.",
       },
       {
         topicId: "environment-education",
         rank: 5,
         intensity: 3,
-        evidence: "도심 위치 — 환경 인식 균형 운영 권장",
+        evidence: "도시 생활환경 맥락에서 환경 인식과 실천 교육을 꾸준히 운영하기 적합합니다.",
         evidenceData: { value: 1, baseline: 1 },
-        hoursRecommendation: "환경교육주간 연계 4시간 이상 권장",
+        hoursRecommendation: "환경교육주간 연계 4시간 이상 운영을 권장합니다.",
       },
     ],
     allTopicsIntensity: {
@@ -280,9 +260,6 @@ export const sampleStandard: SchoolResult = {
   generatedAt: "2026-05-04T20:00:00+09:00",
 };
 
-// ============================================================
-// 조회 헬퍼
-// ============================================================
 export const SAMPLE_SCHOOLS: Record<string, SchoolResult> = {
   "sample-urban": sampleUrban,
   "sample-rural": sampleRural,

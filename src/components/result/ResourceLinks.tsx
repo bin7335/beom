@@ -1,34 +1,44 @@
-import type { Recommendation } from "@/lib/types";
+import type { TopicRecommendation } from "@/lib/types";
+import { RESOURCE_LINKS, getTopicById } from "@/lib/types";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
-export function ResourceLinks({ recommendations }: { recommendations: Recommendation[] }) {
+export function ResourceLinks({
+  recommendations,
+}: {
+  recommendations: TopicRecommendation[];
+}) {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>🔗 관련 교육자료</CardTitle>
+        <CardTitle>연계 교육 자료</CardTitle>
       </CardHeader>
       <CardContent>
         <div className="space-y-4">
-          {recommendations.map((rec) => (
-            <div key={rec.rank}>
-              <div className="font-medium mb-2">
-                {rec.rank}위 — {rec.topic}
+          {recommendations.map((rec) => {
+            const topic = getTopicById(rec.topicId);
+            const resources = RESOURCE_LINKS[rec.topicId] ?? [];
+
+            return (
+              <div key={rec.rank}>
+                <div className="mb-2 font-medium">
+                  {rec.rank}위. {topic.name}
+                </div>
+                <div className="flex flex-wrap gap-2">
+                  {resources.map((res) => (
+                    <a
+                      key={`${rec.topicId}-${res.url}`}
+                      href={res.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-sm text-blue-600 hover:underline"
+                    >
+                      자료 보기: {res.name}
+                    </a>
+                  ))}
+                </div>
               </div>
-              <div className="flex flex-wrap gap-2">
-                {rec.resources.map((res) => (
-                  <a
-                    key={res.url}
-                    href={res.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-sm text-blue-600 hover:underline"
-                  >
-                    🔗 {res.name}
-                  </a>
-                ))}
-              </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </CardContent>
     </Card>

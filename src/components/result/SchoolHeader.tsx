@@ -6,10 +6,8 @@ export function SchoolHeader({ school }: { school: School }) {
     <Card>
       <CardContent className="p-6">
         <h1 className="text-2xl font-bold">{school.name}</h1>
-        <p className="text-sm text-muted-foreground mt-1">
-          {school.address}
-        </p>
-        <div className="flex gap-6 mt-4 text-sm">
+        <p className="mt-1 text-sm text-muted-foreground">{school.address}</p>
+        <div className="mt-4 flex flex-wrap gap-6 text-sm">
           <div>
             <span className="text-muted-foreground">학생 수</span>
             <span className="ml-2 font-medium">{school.studentCount}명</span>
