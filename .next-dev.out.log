@@ -5,10 +5,10 @@
 ▲ Next.js 16.2.4 (Turbopack)
 - Local:         http://localhost:3000
 - Network:       http://192.168.219.112:3000
-✓ Ready in 1867ms
+✓ Ready in 2.8s
 Creating turbopack project { dir: 'D:\\dev\\beom', testMode: true }
 
-○ Compiling / ...
- GET / 200 in 5.3s (next.js: 4.7s, application-code: 656ms)
- GET / 200 in 183ms (next.js: 20ms, application-code: 163ms)
- GET / 200 in 180ms (next.js: 23ms, application-code: 158ms)
+ GET / 200 in 2.3s (next.js: 1013ms, application-code: 1295ms)
+ GET /school/sample-urban 200 in 2.7s (next.js: 1904ms, application-code: 782ms)
+ GET /school/sample-rural 200 in 293ms (next.js: 35ms, application-code: 258ms)
+ GET /school/sample-standard 200 in 454ms (next.js: 20ms, application-code: 435ms)
