@@ -50,6 +50,7 @@ data/raw/*
 !data/raw/neis_schools_경북초등.json
 data/processed/*
 !data/processed/.gitkeep
+!data/processed/schools_with_coords.json
 data/clean/*
 !data/clean/.gitkeep
 data/final/*
