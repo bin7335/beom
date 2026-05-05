@@ -34,7 +34,7 @@ export default function HomePage() {
           </div>
           <div className="space-y-4">
             <h1 className="max-w-3xl text-4xl font-semibold tracking-tight text-balance sm:text-5xl">
-              학교에 진짜 필요한 범교과 교육 주제를 데이터로 찾습니다.
+              학교에 진짜 필요한 교육 주제를 데이터로 찾습니다.
             </h1>
             <p className="max-w-2xl text-base leading-7 text-muted-foreground sm:text-lg">
               교육해Beom은 학교 인근 공공데이터를 분석해 학교별 맞춤 범교과·계기교육 주제를 추천하는
