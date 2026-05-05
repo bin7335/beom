@@ -30,14 +30,14 @@ export default function HomePage() {
       <section className="grid min-h-[calc(100vh-8rem)] items-center gap-10 py-8 lg:grid-cols-[1.2fr_0.8fr]">
         <div className="space-y-6">
           <div className="inline-flex w-fit items-center rounded-full border border-blue-200 bg-blue-50 px-3 py-1 text-xs font-medium text-blue-700">
-            교원용 의사결정 보조 서비스
+            범교과 교육과정 의사결정 보조 서비스
           </div>
           <div className="space-y-4">
             <h1 className="max-w-3xl text-4xl font-semibold tracking-tight text-balance sm:text-5xl">
               학교에 진짜 필요한 범교과 교육 주제를 데이터로 찾습니다.
             </h1>
             <p className="max-w-2xl text-base leading-7 text-muted-foreground sm:text-lg">
-              교육해범은 학교 인근 공공데이터를 분석해 학교별 맞춤 범교과·계기교육 주제를 추천하는
+              교육해Beom은 학교 인근 공공데이터를 분석해 학교별 맞춤 범교과·계기교육 주제를 추천하는
               교원용 의사결정 보조 서비스입니다. 학부모용 안내가 아니라 교육과정 편성 담당 교사를 위한
               업무 지원 도구를 목표로 합니다.
             </p>
@@ -59,7 +59,7 @@ export default function HomePage() {
               <div className="rounded-xl border bg-background p-4">
                 <div className="text-sm font-medium">1. 학교 주변 지표 확인</div>
                 <div className="mt-1 text-sm text-muted-foreground">
-                  교통사고, 보호구역, 다문화 비율, 학교폭력 지표 등 학교 주변 맥락을 읽습니다.
+                  교통사고, 보호구역, 다문화 비율, 학교폭력 지표 등 학교 주변 맥락을 분석합니다.
                 </div>
               </div>
               <div className="rounded-xl border bg-background p-4">
@@ -133,7 +133,7 @@ export default function HomePage() {
 
       <footer className="border-t py-8">
         <div className="flex flex-col gap-2 text-sm text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
-          <div>제8회 교육 공공데이터 AI 활용대회 출품작</div>
+          <div>교육 공공데이터 AI 활용</div>
           <Link href="/data-sources" className="font-medium text-blue-700 hover:underline">
             데이터 출처 안내
           </Link>
