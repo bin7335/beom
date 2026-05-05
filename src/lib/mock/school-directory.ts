@@ -3,12 +3,12 @@ import { SAMPLE_SCHOOLS } from "@/lib/mock/sample-schools";
 
 const SCHOOL_DISPLAY_OVERRIDES: Record<string, Pick<School, "name" | "address" | "sigungu">> = {
   "sample-urban": {
-    name: "포항제철초등학교",
-    address: "경상북도 포항시 남구 효자동",
-    sigungu: "포항시 남구",
+    name: "안동초등학교",
+    address: "경상북도 안동시 남문동",
+    sigungu: "안동시",
   },
   "sample-rural": {
-    name: "영양분교",
+    name: "소규모학교",
     address: "경상북도 영양군 입암면",
     sigungu: "영양군",
   },
