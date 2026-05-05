@@ -23,13 +23,13 @@ const baselineIntensity: AllTopicsIntensity = {
 export const sampleUrban: SchoolResult = {
   school: {
     code: "sample-urban",
-    name: "포항제철초등학교 (예시)",
-    address: "경상북도 포항시 남구 효자동",
+    name: "안동초등학교 (예시)",
+    address: "경상북도 안동시 남문동",
     lat: 36.019,
     lng: 129.3435,
     studentCount: 612,
     classCount: 24,
-    sigungu: "포항시 남구",
+    sigungu: "안동시 남문동",
   },
   environment: {
     trafficAccidents3yr: 18,
@@ -103,7 +103,7 @@ export const sampleUrban: SchoolResult = {
 export const sampleRural: SchoolResult = {
   school: {
     code: "sample-rural",
-    name: "영양분교 (예시)",
+    name: "소규모 학교 (예시)",
     address: "경상북도 영양군 입암면",
     lat: 36.6664,
     lng: 129.1124,
