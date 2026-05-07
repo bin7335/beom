@@ -68,17 +68,17 @@ export function RecommendationList({
                     <span className="rounded-full bg-primary/10 px-3 py-1 text-sm font-bold text-primary">
                       {rec.rank}. 추천 교육
                     </span>
-                    <h3 className="text-base font-semibold sm:text-lg">{topic.name}</h3>
+                    <h3 className="ko-keep text-base font-semibold sm:text-lg">{topic.name}</h3>
                     <Badge className={state.className}>{state.label}</Badge>
                   </div>
-                  <p className="mb-3 text-sm leading-6 text-muted-foreground">
+                  <p className="ko-keep mb-3 text-sm leading-6 text-muted-foreground">
                     {rec.evidence}
                   </p>
-                  <p className="mb-4 text-sm leading-6">{rec.hoursRecommendation}</p>
+                  <p className="ko-keep mb-4 text-sm leading-6">{rec.hoursRecommendation}</p>
                   <div className="flex flex-wrap gap-2 text-sm">
-                    <Badge variant="outline">근거 그룹: {rec.groupLabel}</Badge>
+                    <Badge variant="outline" className="ko-keep">근거 그룹: {rec.groupLabel}</Badge>
                     <Badge variant="outline">환경 점수: {rec.score}점</Badge>
-                    <Badge variant="outline">권장 시수 방향: 보강 우선</Badge>
+                    <Badge variant="outline" className="ko-keep">권장 시수 방향: 보강 우선</Badge>
                   </div>
                   {primaryResource ? (
                     <div className="mt-4">
@@ -97,7 +97,7 @@ export function RecommendationList({
                 <div className="rounded-lg bg-muted px-4 py-3 sm:min-w-40">
                   <div className="text-sm text-muted-foreground">환경 점수</div>
                   <div className="mt-1 text-2xl font-bold">{rec.score}점</div>
-                  <div className="mt-1 text-sm text-muted-foreground">
+                  <div className="ko-keep mt-1 text-sm text-muted-foreground">
                     {rec.groupLabel} · {state.label}
                   </div>
                 </div>
@@ -119,8 +119,8 @@ export function RecommendationList({
                 <div key={item.topicId} className="rounded-lg border bg-background p-4">
                   <div className="flex items-start justify-between gap-3">
                     <div className="min-w-0">
-                      <div className="text-sm font-semibold">{topic.label}</div>
-                      <div className="mt-1 text-sm text-muted-foreground">
+                      <div className="ko-keep text-sm font-semibold">{topic.label}</div>
+                      <div className="ko-keep mt-1 text-sm text-muted-foreground">
                         {topic.category}
                       </div>
                     </div>
@@ -135,7 +135,7 @@ export function RecommendationList({
                       style={{ width: `${item.score}%` }}
                     />
                   </div>
-                  <p className="mt-3 text-sm leading-6 text-muted-foreground">
+                  <p className="ko-keep mt-3 text-sm leading-6 text-muted-foreground">
                     {item.reason}
                   </p>
                 </div>

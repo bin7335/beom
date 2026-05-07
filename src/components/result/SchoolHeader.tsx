@@ -6,10 +6,10 @@ export function SchoolHeader({ school }: { school: School }) {
     <Card>
       <CardContent className="p-4 sm:p-6">
         <div className="space-y-2">
-          <h1 className="text-2xl font-bold leading-tight sm:text-3xl">
+          <h1 className="ko-keep text-2xl font-bold leading-tight sm:text-3xl">
             {school.name}
           </h1>
-          <p className="text-sm leading-6 text-muted-foreground sm:text-base">
+          <p className="ko-keep text-sm leading-6 text-muted-foreground sm:text-base">
             {school.address}
           </p>
         </div>

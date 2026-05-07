@@ -24,7 +24,7 @@ export function ResourceLinks({
 
             return (
               <div key={rec.rank} className="rounded-xl border p-4">
-                <div className="mb-3 text-sm font-semibold">
+                <div className="ko-keep mb-3 text-sm font-semibold">
                   {rec.rank}위. {topic.name}
                 </div>
                 <div className="flex flex-wrap gap-3">

@@ -16,7 +16,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko" className="h-full antialiased">
-      <body className="min-h-full bg-background text-foreground">
+      <body className="ko-keep min-h-full bg-background text-foreground">
         <RouteProgressBar />
         <div className="flex min-h-screen flex-col">
           <SiteHeader />

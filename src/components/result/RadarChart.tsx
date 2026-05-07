@@ -134,13 +134,13 @@ export function RadarChart({
           {data.map((item) => (
             <div key={item.groupId} className="rounded-xl border p-4">
               <div className="flex items-center justify-between gap-3">
-                <div className="text-sm font-semibold">{item.group}</div>
+                <div className="ko-keep text-sm font-semibold">{item.group}</div>
                 <Badge className={getScoreState(item.score).badgeClassName}>
                   {getScoreState(item.score).label}
                 </Badge>
               </div>
               <div className="mt-2 text-2xl font-bold">{item.score}점</div>
-              <div className="mt-2 text-sm text-muted-foreground">
+              <div className="ko-keep mt-2 text-sm text-muted-foreground">
                 포함 데이터: {item.items.join(", ")}
               </div>
             </div>
@@ -160,14 +160,14 @@ export function RadarChart({
                 key={item.id}
                 className="rounded-xl border bg-background p-4 sm:p-5"
               >
-                <div className="text-sm text-muted-foreground">{item.label}</div>
+                <div className="ko-keep text-sm text-muted-foreground">{item.label}</div>
                 <div className="mt-2 text-2xl font-bold">
                   {Number.isNaN(item.value)
                     ? "데이터 없음"
                     : `${item.value}${item.unit ?? ""}`}
                 </div>
                 {item.description ? (
-                  <div className="mt-2 text-sm text-muted-foreground">
+                  <div className="ko-keep mt-2 text-sm text-muted-foreground">
                     {item.description}
                   </div>
                 ) : null}
