@@ -1,6 +1,7 @@
 "use client";
 
 import type { EnvironmentIndicator, RadarDataPoint } from "@/lib/types";
+import type { PolarAngleAxisProps } from "recharts";
 import {
   PolarAngleAxis,
   PolarGrid,
@@ -39,6 +40,38 @@ function getScoreState(score: number) {
   };
 }
 
+function formatGroupLabel(group: string) {
+  return group.replace(" 환경", "\n환경");
+}
+
+function AngleTick({
+  x = 0,
+  y = 0,
+  payload,
+}: PolarAngleAxisProps & {
+  x?: number;
+  y?: number;
+  payload?: { value: string };
+}) {
+  const lines = formatGroupLabel(payload?.value ?? "").split("\n");
+
+  return (
+    <text
+      x={x}
+      y={y}
+      textAnchor="middle"
+      fill="var(--muted-foreground)"
+      fontSize={12}
+    >
+      {lines.map((line, index) => (
+        <tspan key={`${line}-${index}`} x={x} dy={index === 0 ? 0 : 14}>
+          {line}
+        </tspan>
+      ))}
+    </text>
+  );
+}
+
 export function RadarChart({
   data,
   indicators,
@@ -61,26 +94,25 @@ export function RadarChart({
               학교 인근 공공데이터로 산출된 5개 영역의 환경 점수입니다.
             </p>
           </div>
-          <Badge className={state.badgeClassName}>평균 환경 점수 {averageScore}점</Badge>
+          <Badge className={state.badgeClassName}>
+            평균 환경 점수 {averageScore}점
+          </Badge>
         </div>
         <p className="rounded-xl border border-dashed px-4 py-3 text-sm leading-6 text-muted-foreground">
           오각형이 작을수록 학교 인근 환경에 보강이 필요한 영역이 많습니다.
         </p>
       </CardHeader>
       <CardContent className="space-y-6">
-        <div className="h-[300px] w-full sm:h-[360px]">
+        <div className="h-[320px] w-full sm:h-[380px]">
           <ResponsiveContainer width="100%" height="100%">
             <RechartsRadarChart
               data={data}
               cx="50%"
-              cy="50%"
-              outerRadius="64%"
+              cy="52%"
+              outerRadius="62%"
             >
               <PolarGrid stroke="var(--border)" />
-              <PolarAngleAxis
-                dataKey="group"
-                tick={{ fill: "var(--muted-foreground)", fontSize: 12 }}
-              />
+              <PolarAngleAxis dataKey="group" tick={<AngleTick />} />
               <PolarRadiusAxis
                 angle={90}
                 domain={[0, 100]}
@@ -109,7 +141,7 @@ export function RadarChart({
               </div>
               <div className="mt-2 text-2xl font-bold">{item.score}점</div>
               <div className="mt-2 text-sm text-muted-foreground">
-                포함 주제: {item.items.join(", ")}
+                포함 데이터: {item.items.join(", ")}
               </div>
             </div>
           ))}
@@ -124,10 +156,15 @@ export function RadarChart({
           </div>
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
             {indicators.map((item) => (
-              <div key={item.id} className="rounded-xl border bg-background p-4 sm:p-5">
+              <div
+                key={item.id}
+                className="rounded-xl border bg-background p-4 sm:p-5"
+              >
                 <div className="text-sm text-muted-foreground">{item.label}</div>
                 <div className="mt-2 text-2xl font-bold">
-                  {Number.isNaN(item.value) ? "데이터 없음" : `${item.value}${item.unit ?? ""}`}
+                  {Number.isNaN(item.value)
+                    ? "데이터 없음"
+                    : `${item.value}${item.unit ?? ""}`}
                 </div>
                 {item.description ? (
                   <div className="mt-2 text-sm text-muted-foreground">

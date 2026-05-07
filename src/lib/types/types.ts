@@ -331,52 +331,52 @@ export const CURRICULUM_TOPIC_METADATA: Record<
   "safety-health": {
     id: "safety-health",
     label: "안전·건강",
-    category: "안전·건강",
+    category: "안전·건강 환경",
   },
   character: {
     id: "character",
-    label: "인성",
-    category: "인성·진로",
+    label: "공동체",
+    category: "공동체·진로 환경",
   },
   career: {
     id: "career",
     label: "진로",
-    category: "인성·진로",
+    category: "공동체·진로 환경",
   },
   "democratic-citizenship": {
     id: "democratic-citizenship",
     label: "민주시민",
-    category: "사회·시민",
+    category: "사회·시민 환경",
   },
   unification: {
     id: "unification",
     label: "통일",
-    category: "사회·시민",
+    category: "사회·시민 환경",
   },
   dokdo: {
     id: "dokdo",
     label: "독도",
-    category: "사회·시민",
+    category: "사회·시민 환경",
   },
   "human-rights": {
     id: "human-rights",
     label: "인권",
-    category: "인권·다양성",
+    category: "인권·다양성 환경",
   },
   multicultural: {
     id: "multicultural",
     label: "다문화",
-    category: "인권·다양성",
+    category: "인권·다양성 환경",
   },
   "economic-finance": {
     id: "economic-finance",
     label: "경제·금융",
-    category: "미래·지속가능",
+    category: "환경·지속가능",
   },
   "environment-sustainability": {
     id: "environment-sustainability",
     label: "환경·지속가능발전",
-    category: "미래·지속가능",
+    category: "환경·지속가능",
   },
 };
 

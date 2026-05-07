@@ -77,8 +77,8 @@ export function RecommendationList({
                   <p className="mb-4 text-sm leading-6">{rec.hoursRecommendation}</p>
                   <div className="flex flex-wrap gap-2 text-sm">
                     <Badge variant="outline">근거 그룹: {rec.groupLabel}</Badge>
+                    <Badge variant="outline">환경 점수: {rec.score}점</Badge>
                     <Badge variant="outline">권장 시수 방향: 보강 우선</Badge>
-                    <Badge variant="outline">법적 근거: {topic.legalBasis}</Badge>
                   </div>
                   {primaryResource ? (
                     <div className="mt-4">
@@ -94,10 +94,12 @@ export function RecommendationList({
                     </div>
                   ) : null}
                 </div>
-                <div className="rounded-lg bg-muted px-4 py-3 sm:min-w-36">
+                <div className="rounded-lg bg-muted px-4 py-3 sm:min-w-40">
                   <div className="text-sm text-muted-foreground">환경 점수</div>
                   <div className="mt-1 text-2xl font-bold">{rec.score}점</div>
-                  <div className="mt-1 text-sm text-muted-foreground">{state.label}</div>
+                  <div className="mt-1 text-sm text-muted-foreground">
+                    {rec.groupLabel} · {state.label}
+                  </div>
                 </div>
               </div>
             </div>

@@ -39,15 +39,15 @@ function createEnvironmentIndicators(input: {
 }): EnvironmentIndicator[] {
   return [
     {
-      id: "traffic-accidents",
-      label: "최근 3년 인근 교통사고",
+      id: "school-zone-accidents",
+      label: "스쿨존 사고다발지역",
       value: input.trafficAccidents3yr,
-      unit: "건",
-      description: `경북 평균 ${input.avgTrafficAccidents}건`,
+      unit: "곳",
+      description: `경북 평균 ${input.avgTrafficAccidents}곳`,
     },
     {
       id: "child-protection-zones",
-      label: "어린이보호구역 수",
+      label: "어린이보호구역",
       value: input.childProtectionZones,
       unit: "개소",
       description: `경북 평균 ${input.avgChildProtectionZones}개소`,
@@ -76,46 +76,46 @@ function createEnvironmentIndicators(input: {
 
 function createRadarData(input: {
   safetyHealth: number;
-  characterCareer: number;
+  communityCareer: number;
   societyCitizenship: number;
   rightsDiversity: number;
-  futureSustainability: number;
+  environmentSustainability: number;
 }): RadarDataPoint[] {
   return [
     {
       groupId: "safety-health",
-      group: "안전·건강",
+      group: "안전·건강 환경",
       score: input.safetyHealth,
       rawValue: input.safetyHealth,
-      items: ["안전·건강"],
+      items: ["스쿨존 사고다발지역", "어린이보호구역", "CCTV", "학교폭력"],
     },
     {
       groupId: "character-career",
-      group: "인성·진로",
-      score: input.characterCareer,
-      rawValue: input.characterCareer,
-      items: ["인성", "진로"],
+      group: "공동체·진로 환경",
+      score: input.communityCareer,
+      rawValue: input.communityCareer,
+      items: ["청소년수련시설", "진로체험처", "아동복지시설"],
     },
     {
       groupId: "society-citizenship",
-      group: "사회·시민",
+      group: "사회·시민 환경",
       score: input.societyCitizenship,
       rawValue: input.societyCitizenship,
-      items: ["민주시민", "통일", "독도"],
+      items: ["공공기관", "공공도서관", "문화시설", "시민단체"],
     },
     {
       groupId: "rights-diversity",
-      group: "인권·다양성",
+      group: "인권·다양성 환경",
       score: input.rightsDiversity,
       rawValue: input.rightsDiversity,
-      items: ["인권", "다문화"],
+      items: ["다문화 비율", "특수학급", "외국인 주민", "장애인복지시설"],
     },
     {
       groupId: "future-sustainability",
-      group: "미래·지속가능",
-      score: input.futureSustainability,
-      rawValue: input.futureSustainability,
-      items: ["경제·금융", "환경·지속가능발전"],
+      group: "환경·지속가능",
+      score: input.environmentSustainability,
+      rawValue: input.environmentSustainability,
+      items: ["대기질", "공원·녹지", "재활용시설"],
     },
   ];
 }
@@ -168,12 +168,12 @@ const urbanCurriculumTopicScores: CurriculumTopicScore[] = [
   {
     topicId: "human-rights",
     score: 81,
-    reason: "인권·다양성 영역은 비교적 양호하지만 꾸준한 운영은 필요합니다.",
+    reason: "인권·다양성 환경은 비교적 양호하지만 꾸준한 운영은 필요합니다.",
   },
   {
     topicId: "character",
     score: 83,
-    reason: "학생 규모가 커도 학교 운영 기반은 안정적이라 인성교육 여건이 좋습니다.",
+    reason: "공동체 경험을 다루는 교육 여건은 안정적이라 인성교육 운영에 무리가 없습니다.",
   },
   {
     topicId: "career",
@@ -183,7 +183,7 @@ const urbanCurriculumTopicScores: CurriculumTopicScore[] = [
   {
     topicId: "safety-health",
     score: 88,
-    reason: "전반적으로 양호한 편이며 안전·건강 영역의 기반도 비교적 안정적입니다.",
+    reason: "전반적으로 양호한 편이며 안전·건강 환경의 기반도 비교적 안정적입니다.",
   },
 ];
 
@@ -191,7 +191,7 @@ const ruralCurriculumTopicScores: CurriculumTopicScore[] = [
   {
     topicId: "safety-health",
     score: 32,
-    reason: "농어촌 통학 환경과 생활 안전 요인을 반영하면 가장 먼저 보강이 필요한 영역입니다.",
+    reason: "통학 환경과 생활 안전 요인을 반영하면 가장 먼저 보강이 필요한 영역입니다.",
   },
   {
     topicId: "multicultural",
@@ -206,7 +206,7 @@ const ruralCurriculumTopicScores: CurriculumTopicScore[] = [
   {
     topicId: "unification",
     score: 63,
-    reason: "사회·시민 영역은 기본 운영이 가능하지만 다른 취약 영역보다 후순위입니다.",
+    reason: "사회·시민 환경은 기본 운영이 가능하지만 다른 취약 영역보다 후순위입니다.",
   },
   {
     topicId: "democratic-citizenship",
@@ -244,7 +244,7 @@ const standardCurriculumTopicScores: CurriculumTopicScore[] = [
   {
     topicId: "safety-health",
     score: 28,
-    reason: "안전·건강 관련 보강이 가장 시급한 학교 환경 사례입니다.",
+    reason: "안전·건강 환경 관련 보강이 가장 시급한 학교 환경 사례입니다.",
   },
   {
     topicId: "multicultural",
@@ -259,17 +259,17 @@ const standardCurriculumTopicScores: CurriculumTopicScore[] = [
   {
     topicId: "economic-finance",
     score: 39,
-    reason: "미래 역량 영역은 현재 환경 점수가 낮아 우선 보강 대상입니다.",
+    reason: "환경·지속가능 영역과 연결된 미래 역량 환경 점수가 낮아 우선 보강 대상입니다.",
   },
   {
     topicId: "environment-sustainability",
     score: 40,
-    reason: "환경·지속가능발전 영역도 실천형 활동을 늘릴 필요가 있습니다.",
+    reason: "환경·지속가능 영역도 실천형 활동을 늘릴 필요가 있습니다.",
   },
   {
     topicId: "democratic-citizenship",
     score: 42,
-    reason: "사회·시민 영역은 기초는 있으나 학교 차원에서 더 강화할 여지가 있습니다.",
+    reason: "사회·시민 환경은 기초는 있으나 학교 차원에서 더 강화할 여지가 있습니다.",
   },
   {
     topicId: "unification",
@@ -289,7 +289,7 @@ const standardCurriculumTopicScores: CurriculumTopicScore[] = [
   {
     topicId: "career",
     score: 49,
-    reason: "진로 노출 기회를 넓히면 인성·진로 영역의 진단 점수를 끌어올릴 수 있습니다.",
+    reason: "진로 노출 기회를 넓히면 공동체·진로 환경의 진단 점수를 끌어올릴 수 있습니다.",
   },
 ];
 
@@ -297,55 +297,55 @@ const urbanRecommendations: TopicRecommendation[] = [
   recommendation({
     topicId: "environment-education",
     groupId: "future-sustainability",
-    groupLabel: "미래·지속가능",
+    groupLabel: "환경·지속가능",
     rank: 1,
     score: 72,
     evidence:
-      "미래·지속가능 영역이 이 학교에서 가장 먼저 보완할 환경 진단 결과로 나타났습니다.",
+      "환경·지속가능 영역이 이 학교에서 가장 먼저 보완할 환경 진단 결과로 나타났습니다.",
     evidenceData: { value: 72, baseline: 100 },
     hoursRecommendation: "환경교육주간과 프로젝트 수업을 연계해 권장 시수를 안정적으로 확보합니다.",
   }),
   recommendation({
     topicId: "democratic-citizen-education",
     groupId: "society-citizenship",
-    groupLabel: "사회·시민",
+    groupLabel: "사회·시민 환경",
     rank: 2,
     score: 76,
     evidence:
-      "사회·시민 영역은 기본 여건은 갖춰져 있지만 다른 양호 영역보다 상대적으로 먼저 챙길 만합니다.",
+      "사회·시민 환경은 기본 여건은 갖춰져 있지만 다른 양호 영역보다 상대적으로 먼저 챙길 만합니다.",
     evidenceData: { value: 76, baseline: 100 },
     hoursRecommendation: "학생자치와 사회과 활동을 연결해 민주시민교육의 체감도를 높입니다.",
   }),
   recommendation({
     topicId: "multicultural-education",
     groupId: "rights-diversity",
-    groupLabel: "인권·다양성",
+    groupLabel: "인권·다양성 환경",
     rank: 3,
     score: 80,
     evidence:
-      "인권·다양성 영역은 양호하지만 학생 구성 특성을 고려하면 예방적 운영 가치가 높습니다.",
+      "인권·다양성 환경은 양호하지만 학생 구성 특성을 고려하면 예방적 운영 가치가 높습니다.",
     evidenceData: { value: 80, baseline: 100 },
     hoursRecommendation: "다문화 이해교육과 학급 관계성 프로그램을 함께 배치해 꾸준히 운영합니다.",
   }),
   recommendation({
     topicId: "character-education",
     groupId: "character-career",
-    groupLabel: "인성·진로",
+    groupLabel: "공동체·진로 환경",
     rank: 4,
     score: 84,
     evidence:
-      "인성·진로 영역은 비교적 양호한 편이라 중장기 운영 중심으로 접근하면 충분합니다.",
+      "공동체·진로 환경은 비교적 양호한 편이라 중장기 운영 중심으로 접근하면 충분합니다.",
     evidenceData: { value: 84, baseline: 100 },
     hoursRecommendation: "학년군별 생활교육과 진로활동을 연결해 연간 흐름으로 운영합니다.",
   }),
   recommendation({
     topicId: "safety-education",
     groupId: "safety-health",
-    groupLabel: "안전·건강",
+    groupLabel: "안전·건강 환경",
     rank: 5,
     score: 88,
     evidence:
-      "안전·건강 영역은 현재 가장 양호한 편이므로 표준 운영을 유지하는 수준이면 충분합니다.",
+      "안전·건강 환경은 현재 가장 양호한 편이므로 표준 운영을 유지하는 수준이면 충분합니다.",
     evidenceData: { value: 88, baseline: 100 },
     hoursRecommendation: "법정 기준을 중심으로 유지하되 교내 사례 중심 점검 활동만 보강합니다.",
   }),
@@ -355,55 +355,55 @@ const ruralRecommendations: TopicRecommendation[] = [
   recommendation({
     topicId: "safety-education",
     groupId: "safety-health",
-    groupLabel: "안전·건강",
+    groupLabel: "안전·건강 환경",
     rank: 1,
     score: 32,
     evidence:
-      "안전·건강 영역의 환경 점수가 가장 낮아 학교 인근 생활 안전과 통학 안전 보강이 시급합니다.",
+      "안전·건강 환경의 점수가 가장 낮아 학교 인근 생활 안전과 통학 안전 보강이 시급합니다.",
     evidenceData: { value: 32, baseline: 100 },
     hoursRecommendation: "교통안전과 생활안전 중심으로 권장 시수를 우선 배치합니다.",
   }),
   recommendation({
     topicId: "multicultural-education",
     groupId: "rights-diversity",
-    groupLabel: "인권·다양성",
+    groupLabel: "인권·다양성 환경",
     rank: 2,
     score: 55,
     evidence:
-      "인권·다양성 영역은 보통 수준이지만 다문화 학생 비율을 고려하면 선제적 보강이 필요합니다.",
+      "인권·다양성 환경은 보통 수준이지만 다문화 학생 비율을 고려하면 선제적 보강이 필요합니다.",
     evidenceData: { value: 55, baseline: 100 },
     hoursRecommendation: "다문화 이해교육과 학급 규칙 세우기 활동을 묶어 운영합니다.",
   }),
   recommendation({
     topicId: "democratic-citizen-education",
     groupId: "society-citizenship",
-    groupLabel: "사회·시민",
+    groupLabel: "사회·시민 환경",
     rank: 3,
     score: 64,
     evidence:
-      "사회·시민 영역은 다른 양호 영역보다 먼저 다뤄 두면 공동체 경험을 넓히는 데 도움이 됩니다.",
+      "사회·시민 환경은 다른 양호 영역보다 먼저 다뤄 두면 공동체 경험을 넓히는 데 도움이 됩니다.",
     evidenceData: { value: 64, baseline: 100 },
     hoursRecommendation: "작은 학교 규모를 살려 참여형 토의와 학생자치 활동을 늘립니다.",
   }),
   recommendation({
     topicId: "character-education",
     groupId: "character-career",
-    groupLabel: "인성·진로",
+    groupLabel: "공동체·진로 환경",
     rank: 4,
     score: 73,
     evidence:
-      "인성·진로 영역은 보통 이상이지만 진로 노출 기회 보강은 계속 필요합니다.",
+      "공동체·진로 환경은 보통 이상이지만 진로 노출 기회 보강은 계속 필요합니다.",
     evidenceData: { value: 73, baseline: 100 },
     hoursRecommendation: "외부 체험형 진로활동과 학년 통합 인성 프로그램을 함께 엮습니다.",
   }),
   recommendation({
     topicId: "environment-education",
     groupId: "future-sustainability",
-    groupLabel: "미래·지속가능",
+    groupLabel: "환경·지속가능",
     rank: 5,
     score: 82,
     evidence:
-      "미래·지속가능 영역은 이 학교의 강점에 가까워 유지 중심의 운영이 적절합니다.",
+      "환경·지속가능 영역은 이 학교의 강점에 가까워 유지 중심의 운영이 적절합니다.",
     evidenceData: { value: 82, baseline: 100 },
     hoursRecommendation: "생태 체험과 지역 자원 기반 프로젝트를 중심으로 꾸준히 운영합니다.",
   }),
@@ -413,55 +413,55 @@ const standardRecommendations: TopicRecommendation[] = [
   recommendation({
     topicId: "safety-education",
     groupId: "safety-health",
-    groupLabel: "안전·건강",
+    groupLabel: "안전·건강 환경",
     rank: 1,
     score: 28,
     evidence:
-      "안전·건강 영역의 환경 점수가 가장 낮아 이 학교에서 가장 먼저 보강해야 할 영역으로 나타났습니다.",
+      "안전·건강 환경의 점수가 가장 낮아 이 학교에서 가장 먼저 보강해야 할 영역으로 나타났습니다.",
     evidenceData: { value: 28, baseline: 100 },
     hoursRecommendation: "안전교육과 보건교육을 묶어 권장 시수를 우선 확보합니다.",
   }),
   recommendation({
     topicId: "multicultural-education",
     groupId: "rights-diversity",
-    groupLabel: "인권·다양성",
+    groupLabel: "인권·다양성 환경",
     rank: 2,
     score: 34,
     evidence:
-      "인권·다양성 영역도 취약 구간이라 관계 회복과 상호존중 경험을 함께 설계할 필요가 큽니다.",
+      "인권·다양성 환경도 취약 구간이라 관계 회복과 상호존중 경험을 함께 설계할 필요가 큽니다.",
     evidenceData: { value: 34, baseline: 100 },
     hoursRecommendation: "다문화 이해교육과 인권 감수성 활동을 묶어 집중 편성합니다.",
   }),
   recommendation({
     topicId: "environment-education",
     groupId: "future-sustainability",
-    groupLabel: "미래·지속가능",
+    groupLabel: "환경·지속가능",
     rank: 3,
     score: 39,
     evidence:
-      "미래·지속가능 영역도 취약 구간이어서 실천형 프로젝트를 통해 빠르게 체감 개선이 가능합니다.",
+      "환경·지속가능 영역도 취약 구간이어서 실천형 프로젝트를 통해 빠르게 체감 개선이 가능합니다.",
     evidenceData: { value: 39, baseline: 100 },
     hoursRecommendation: "환경·경제 활동을 연계한 프로젝트형 수업으로 권장 시수를 보강합니다.",
   }),
   recommendation({
     topicId: "democratic-citizen-education",
     groupId: "society-citizenship",
-    groupLabel: "사회·시민",
+    groupLabel: "사회·시민 환경",
     rank: 4,
     score: 43,
     evidence:
-      "사회·시민 영역 역시 취약권에 가까워 학생 참여형 경험을 더 의도적으로 설계해야 합니다.",
+      "사회·시민 환경 역시 취약권에 가까워 학생 참여형 경험을 더 의도적으로 설계해야 합니다.",
     evidenceData: { value: 43, baseline: 100 },
     hoursRecommendation: "토의 활동과 학생자치 프로젝트를 활용해 시민성 경험을 늘립니다.",
   }),
   recommendation({
     topicId: "career-education",
     groupId: "character-career",
-    groupLabel: "인성·진로",
+    groupLabel: "공동체·진로 환경",
     rank: 5,
     score: 48,
     evidence:
-      "인성·진로 영역도 충분히 양호하다고 보기 어려워 중기적으로 함께 보완할 필요가 있습니다.",
+      "공동체·진로 환경도 충분히 양호하다고 보기 어려워 중기적으로 함께 보완할 필요가 있습니다.",
     evidenceData: { value: 48, baseline: 100 },
     hoursRecommendation: "관계 형성과 진로 탐색 활동을 연간 흐름으로 묶어 운영합니다.",
   }),
@@ -506,10 +506,10 @@ export const sampleUrban: SchoolResult = {
     curriculumTopicScores: urbanCurriculumTopicScores,
     radarData: createRadarData({
       safetyHealth: 88,
-      characterCareer: 84,
+      communityCareer: 84,
       societyCitizenship: 76,
       rightsDiversity: 80,
-      futureSustainability: 72,
+      environmentSustainability: 72,
     }),
   },
   generatedAt: "2026-05-04T20:00:00+09:00",
@@ -554,10 +554,10 @@ export const sampleRural: SchoolResult = {
     curriculumTopicScores: ruralCurriculumTopicScores,
     radarData: createRadarData({
       safetyHealth: 32,
-      characterCareer: 73,
+      communityCareer: 73,
       societyCitizenship: 64,
       rightsDiversity: 56,
-      futureSustainability: 82,
+      environmentSustainability: 82,
     }),
   },
   generatedAt: "2026-05-04T20:00:00+09:00",
@@ -602,10 +602,10 @@ export const sampleStandard: SchoolResult = {
     curriculumTopicScores: standardCurriculumTopicScores,
     radarData: createRadarData({
       safetyHealth: 28,
-      characterCareer: 48,
+      communityCareer: 48,
       societyCitizenship: 43,
       rightsDiversity: 34,
-      futureSustainability: 39,
+      environmentSustainability: 39,
     }),
   },
   generatedAt: "2026-05-04T20:00:00+09:00",
