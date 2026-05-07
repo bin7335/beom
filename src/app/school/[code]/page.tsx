@@ -21,21 +21,19 @@ export default async function SchoolResultPage({ params }: Props) {
   return (
     <main className="container mx-auto max-w-6xl space-y-6 px-4 py-6 sm:px-6 sm:py-8">
       <SchoolHeader school={result.school} />
-      <div className="grid grid-cols-1 gap-6 lg:grid-cols-[1.2fr_0.8fr] lg:items-start">
-        <RecommendationList
-          recommendations={result.recommendations.top5}
-          allTopicScores={result.recommendations.curriculumTopicScores}
-        />
-        <RadarChart data={result.recommendations.radarData} />
-      </div>
+      <RadarChart data={result.recommendations.radarData} />
+      <RecommendationList
+        recommendations={result.recommendations.top5}
+        allTopicScores={result.recommendations.curriculumTopicScores}
+      />
       <EnvironmentSection environment={result.environment} />
       <ResourceLinks recommendations={result.recommendations.top5} />
 
       <div className="rounded-xl bg-muted/40 px-4 py-5 text-center text-sm leading-6 text-muted-foreground">
         분석 시점: {new Date(result.generatedAt).toLocaleString("ko-KR")}
         <br />
-        현재는 목업 데이터 기반 화면입니다. 실제 데이터 연동 이후 수치와 추천
-        근거가 함께 갱신됩니다.
+        현재는 목업 데이터 기반 화면입니다. 실제 데이터 연동 이후 환경 점수와 추천
+        교육 근거가 함께 갱신됩니다.
       </div>
     </main>
   );

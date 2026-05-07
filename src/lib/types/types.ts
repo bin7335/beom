@@ -280,6 +280,8 @@ export interface Baseline {
 
 export interface TopicRecommendation {
   topicId: TopicId;
+  groupId: RadarGroupId;
+  groupLabel: string;
   rank: 1 | 2 | 3 | 4 | 5;
   intensity: 1 | 2 | 3 | 4 | 5;
   score: number;
@@ -389,6 +391,8 @@ export interface CurriculumTopicScore {
   score: number;
   reason: string;
 }
+
+export type ScoreStatus = "취약" | "보통" | "양호";
 
 export const RADAR_GROUP_IDS = [
   "safety-health",
