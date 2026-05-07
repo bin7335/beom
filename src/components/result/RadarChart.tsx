@@ -1,6 +1,6 @@
 "use client";
 
-import type { RadarDataPoint } from "@/lib/types";
+import type { EnvironmentIndicator, RadarDataPoint } from "@/lib/types";
 import {
   PolarAngleAxis,
   PolarGrid,
@@ -39,7 +39,13 @@ function getScoreState(score: number) {
   };
 }
 
-export function RadarChart({ data }: { data: RadarDataPoint[] }) {
+export function RadarChart({
+  data,
+  indicators,
+}: {
+  data: RadarDataPoint[];
+  indicators: EnvironmentIndicator[];
+}) {
   const averageScore = Math.round(
     data.reduce((sum, item) => sum + item.score, 0) / data.length,
   );
@@ -107,6 +113,30 @@ export function RadarChart({ data }: { data: RadarDataPoint[] }) {
               </div>
             </div>
           ))}
+        </div>
+
+        <div className="space-y-3 rounded-2xl bg-muted/30 p-4 sm:p-5">
+          <div>
+            <h3 className="text-base font-semibold">진단 근거 지표</h3>
+            <p className="mt-1 text-sm leading-6 text-muted-foreground">
+              아래 개별 지표는 위 환경 진단 점수를 해석하는 데 쓰인 핵심 근거입니다.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
+            {indicators.map((item) => (
+              <div key={item.id} className="rounded-xl border bg-background p-4 sm:p-5">
+                <div className="text-sm text-muted-foreground">{item.label}</div>
+                <div className="mt-2 text-2xl font-bold">
+                  {Number.isNaN(item.value) ? "데이터 없음" : `${item.value}${item.unit ?? ""}`}
+                </div>
+                {item.description ? (
+                  <div className="mt-2 text-sm text-muted-foreground">
+                    {item.description}
+                  </div>
+                ) : null}
+              </div>
+            ))}
+          </div>
         </div>
       </CardContent>
     </Card>

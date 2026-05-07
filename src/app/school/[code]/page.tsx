@@ -1,5 +1,4 @@
 import { notFound } from "next/navigation";
-import { EnvironmentSection } from "@/components/result/EnvironmentSection";
 import { RadarChart } from "@/components/result/RadarChart";
 import { RecommendationList } from "@/components/result/RecommendationList";
 import { ResourceLinks } from "@/components/result/ResourceLinks";
@@ -21,12 +20,14 @@ export default async function SchoolResultPage({ params }: Props) {
   return (
     <main className="container mx-auto max-w-6xl space-y-6 px-4 py-6 sm:px-6 sm:py-8">
       <SchoolHeader school={result.school} />
-      <RadarChart data={result.recommendations.radarData} />
+      <RadarChart
+        data={result.recommendations.radarData}
+        indicators={result.environment.indicators}
+      />
       <RecommendationList
         recommendations={result.recommendations.top5}
         allTopicScores={result.recommendations.curriculumTopicScores}
       />
-      <EnvironmentSection environment={result.environment} />
       <ResourceLinks recommendations={result.recommendations.top5} />
 
       <div className="rounded-xl bg-muted/40 px-4 py-5 text-center text-sm leading-6 text-muted-foreground">
