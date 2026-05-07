@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { RouteProgressBar } from "@/components/site/RouteProgressBar";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import "./globals.css";
 
@@ -16,6 +17,7 @@ export default function RootLayout({
   return (
     <html lang="ko" className="h-full antialiased">
       <body className="min-h-full bg-background text-foreground">
+        <RouteProgressBar />
         <div className="flex min-h-screen flex-col">
           <SiteHeader />
           <div className="flex-1">{children}</div>

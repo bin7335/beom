@@ -268,6 +268,7 @@ export interface Environment {
   childProtectionZones: number;
   multiculturalRatio: number;
   schoolViolenceIndex: number | null;
+  indicators: EnvironmentIndicator[];
 }
 
 export interface Baseline {
@@ -281,6 +282,7 @@ export interface TopicRecommendation {
   topicId: TopicId;
   rank: 1 | 2 | 3 | 4 | 5;
   intensity: 1 | 2 | 3 | 4 | 5;
+  score: number;
   evidence: string;
   evidenceData: {
     value: number;
@@ -291,9 +293,126 @@ export interface TopicRecommendation {
 
 export type AllTopicsIntensity = Record<TopicId, number>;
 
+export interface EnvironmentIndicator {
+  id: string;
+  label: string;
+  value: number;
+  unit?: string;
+  description?: string;
+}
+
+export const CURRICULUM_TOPIC_IDS = [
+  "safety-health",
+  "character",
+  "career",
+  "democratic-citizenship",
+  "unification",
+  "dokdo",
+  "human-rights",
+  "multicultural",
+  "economic-finance",
+  "environment-sustainability",
+] as const;
+
+export type CurriculumTopicId = (typeof CURRICULUM_TOPIC_IDS)[number];
+
+export interface CurriculumTopicMetadata {
+  id: CurriculumTopicId;
+  label: string;
+  category: string;
+}
+
+export const CURRICULUM_TOPIC_METADATA: Record<
+  CurriculumTopicId,
+  CurriculumTopicMetadata
+> = {
+  "safety-health": {
+    id: "safety-health",
+    label: "안전·건강",
+    category: "안전·건강",
+  },
+  character: {
+    id: "character",
+    label: "인성",
+    category: "인성·진로",
+  },
+  career: {
+    id: "career",
+    label: "진로",
+    category: "인성·진로",
+  },
+  "democratic-citizenship": {
+    id: "democratic-citizenship",
+    label: "민주시민",
+    category: "사회·시민",
+  },
+  unification: {
+    id: "unification",
+    label: "통일",
+    category: "사회·시민",
+  },
+  dokdo: {
+    id: "dokdo",
+    label: "독도",
+    category: "사회·시민",
+  },
+  "human-rights": {
+    id: "human-rights",
+    label: "인권",
+    category: "인권·다양성",
+  },
+  multicultural: {
+    id: "multicultural",
+    label: "다문화",
+    category: "인권·다양성",
+  },
+  "economic-finance": {
+    id: "economic-finance",
+    label: "경제·금융",
+    category: "미래·지속가능",
+  },
+  "environment-sustainability": {
+    id: "environment-sustainability",
+    label: "환경·지속가능발전",
+    category: "미래·지속가능",
+  },
+};
+
+export function getCurriculumTopicById(
+  id: CurriculumTopicId,
+): CurriculumTopicMetadata {
+  return CURRICULUM_TOPIC_METADATA[id];
+}
+
+export interface CurriculumTopicScore {
+  topicId: CurriculumTopicId;
+  score: number;
+  reason: string;
+}
+
+export const RADAR_GROUP_IDS = [
+  "safety-health",
+  "character-career",
+  "society-citizenship",
+  "rights-diversity",
+  "future-sustainability",
+] as const;
+
+export type RadarGroupId = (typeof RADAR_GROUP_IDS)[number];
+
+export interface RadarDataPoint {
+  groupId: RadarGroupId;
+  group: string;
+  score: number;
+  rawValue?: number;
+  items: string[];
+}
+
 export interface Recommendations {
   top5: TopicRecommendation[];
   allTopicsIntensity: AllTopicsIntensity;
+  curriculumTopicScores: CurriculumTopicScore[];
+  radarData: RadarDataPoint[];
 }
 
 export interface SchoolResult {
@@ -303,6 +422,8 @@ export interface SchoolResult {
   recommendations: Recommendations;
   generatedAt: string;
 }
+
+// 교육부 범교과 학습 주제 10개를 시각화 가독성을 위해 5개 그룹으로 묶어 사용한다.
 
 export const RESOURCE_LINKS: Record<TopicId, { name: string; url: string }[]> = {
   "safety-education": [

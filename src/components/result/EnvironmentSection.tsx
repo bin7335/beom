@@ -1,58 +1,38 @@
-import type { Baseline, Environment } from "@/lib/types";
+import type { Environment } from "@/lib/types";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 interface Props {
   environment: Environment;
-  baseline: Baseline;
 }
 
-export function EnvironmentSection({ environment, baseline }: Props) {
-  const items = [
-    {
-      label: "최근 3년 인근 교통사고",
-      value: `${environment.trafficAccidents3yr}건`,
-      baseline: `경북 평균 ${baseline.avgTrafficAccidents}건`,
-    },
-    {
-      label: "어린이보호구역 수",
-      value: `${environment.childProtectionZones}개소`,
-      baseline: `경북 평균 ${baseline.avgChildProtectionZones}개소`,
-    },
-    {
-      label: "다문화 학생 비율",
-      value: `${(environment.multiculturalRatio * 100).toFixed(1)}%`,
-      baseline: `경북 평균 ${(baseline.avgMulticulturalRatio * 100).toFixed(1)}%`,
-    },
-    {
-      label: "학교폭력 지수",
-      value:
-        environment.schoolViolenceIndex !== null
-          ? environment.schoolViolenceIndex.toFixed(3)
-          : "데이터 없음",
-      baseline:
-        baseline.avgSchoolViolenceIndex !== null
-          ? `경북 평균 ${baseline.avgSchoolViolenceIndex.toFixed(3)}`
-          : "비교 기준 없음",
-    },
-  ];
+export function EnvironmentSection({ environment }: Props) {
+  const items = environment.indicators;
 
   return (
     <Card>
-      <CardHeader>
+      <CardHeader className="space-y-2">
         <CardTitle>학교 환경 지표</CardTitle>
+        <p className="text-sm text-muted-foreground">
+          항목 수가 늘어나도 같은 구조로 확장할 수 있도록 배열 기반으로 정리했습니다.
+        </p>
       </CardHeader>
       <CardContent>
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
           {items.map((item) => (
-            <div key={item.label} className="rounded-lg border p-4">
+            <div key={item.id} className="rounded-xl border p-4 sm:p-5">
               <div className="text-sm text-muted-foreground">{item.label}</div>
-              <div className="mt-1 text-2xl font-bold">{item.value}</div>
-              <div className="mt-1 text-xs text-muted-foreground">{item.baseline}</div>
+              <div className="mt-2 text-2xl font-bold">
+                {Number.isNaN(item.value) ? "데이터 없음" : `${item.value}${item.unit ?? ""}`}
+              </div>
+              {item.description ? (
+                <div className="mt-2 text-sm text-muted-foreground">{item.description}</div>
+              ) : null}
             </div>
           ))}
         </div>
-        <div className="mt-4 rounded-lg bg-muted p-4 text-sm text-muted-foreground">
-          현재는 목업 데이터 기준 비교입니다. 실제 공공데이터 연동 시 수치와 근거 문구가 자동으로 갱신됩니다.
+        <div className="mt-4 rounded-xl bg-muted p-4 text-sm leading-6 text-muted-foreground">
+          현재는 목업 데이터 기준 비교입니다. 실제 공공데이터 연동 시 수치와
+          근거 문구가 자동으로 갱신됩니다.
         </div>
       </CardContent>
     </Card>
