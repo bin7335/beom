@@ -36,9 +36,32 @@
 
 ---
 
+## 2026-05-08
+
+- Supabase는 학교 기본 데이터 저장소로 먼저 연결하고, 환경 지표/추천 캐시는 후속 단계에서 확장하기로 했다.
+- `schools` 테이블은 NEIS 학교 표준코드(`SD_SCHUL_CODE`)를 `code` primary key로 사용한다.
+- 브라우저용 Supabase 클라이언트와 서버용 Supabase 클라이언트는 분리한다.
+  - 브라우저용: `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`
+  - 서버/스크립트용: `NEXT_PUBLIC_SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`
+- `service_role` 키는 클라이언트 번들에 들어가지 않도록 서버 전용 파일과 적재 스크립트에서만 사용한다.
+- Supabase SQL은 `supabase/migrations/` 아래에 파일로 보관하고, 실제 실행은 Supabase SQL Editor에서 먼저 수행한다.
+- 학교 데이터 적재는 재실행 가능한 `upsert` 스크립트로 관리한다.
+
+---
+
+## 2026-05-15
+
+- Supabase `schools` 테이블에 경북 초등학교 474건을 적재 완료한 상태를 기준 상태로 삼는다.
+- 검색/결과 화면은 아직 mock 기반이므로, 다음 연결 순서는 `검색 real 전환 -> 결과 기본정보 real 전환 -> 환경 점수 real 전환`으로 둔다.
+- 포항영흥초등학교 좌표 1건은 전체 흐름을 막지 않고, 후속 데이터 품질 개선 항목으로 관리한다.
+- 문서는 PRD 이력 문서보다 `02_2주_작업계획_v2.md`, `04_PROGRESS.md`, `05_DECISIONS.md`, `06_BLOCKERS.md`를 현재 작업 기준으로 우선 최신화한다.
+
+---
+
 ## 데이터/운영 메모
 
 - `.env.local`은 절대 커밋하지 않는다.
 - 데이터 수집 스크립트는 일회성이라도 재실행 가능하게 유지한다.
 - `data/raw`, `data/processed`는 기본적으로 git ignore 대상이지만, 대회 진행과 검증에 필요한 산출물은 예외적으로 추적한다.
 - 카카오 좌표 응답은 `x = lng`, `y = lat`로 매핑한다.
+- Supabase 프로젝트 URL은 `.supabase.co` 형식을 사용한다.
