@@ -31,8 +31,8 @@ export function EnvironmentSection({ environment }: Props) {
           ))}
         </div>
         <div className="mt-4 rounded-xl bg-muted p-4 text-sm leading-6 text-muted-foreground">
-          현재는 목업 데이터 기준 비교입니다. 실제 공공데이터 연동 시 수치와
-          근거 문구가 자동으로 갱신됩니다.
+          현재 환경 지표는 샘플 진단 데이터 기준 비교입니다. 학교 기본 데이터는 Supabase에 적재되어 있으며,
+          교통사고 등 환경 데이터 연결 후 수치와 근거 문구가 갱신됩니다.
         </div>
       </CardContent>
     </Card>

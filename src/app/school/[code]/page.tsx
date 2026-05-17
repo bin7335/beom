@@ -33,8 +33,8 @@ export default async function SchoolResultPage({ params }: Props) {
       <div className="rounded-xl bg-muted/40 px-4 py-5 text-center text-sm leading-6 text-muted-foreground">
         분석 시점: {new Date(result.generatedAt).toLocaleString("ko-KR")}
         <br />
-        현재는 목업 데이터 기반 화면입니다. 실제 데이터 연동 이후 환경 점수와 추천
-        교육 근거가 함께 갱신됩니다.
+        현재 결과 화면은 샘플 진단 데이터 기반입니다. 학교 기본 데이터 474건은 Supabase에 적재되어 있으며,
+        환경 점수와 추천 근거는 후속 real 전환에서 갱신됩니다.
       </div>
     </main>
   );

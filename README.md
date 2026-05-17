@@ -7,9 +7,12 @@
 
 ## 현재 상태
 
-- Day 2 완료: mock 데이터 기반 결과 페이지 동작
-- 메인 페이지에서 샘플 학교 3개 선택 가능
-- 결과 페이지에 학교 헤더, 환경 지표, 추천 TOP 5, 10개 주제 강도, 교육자료 링크 표시
+- 화면 흐름 구현 완료: `/`, `/search`, `/school/[code]`, `/data-sources`
+- 결과 페이지 v2 반영 완료: 학교 환경 진단과 추천 교육 분리
+- NEIS 경북 초등학교 474개 수집 완료
+- 카카오 로컬 API 위경도 변환 완료: 473개 성공, 1개 실패
+- Supabase `schools` 테이블 생성 및 학교 데이터 474건 적재 완료
+- 현재 검색/결과 화면은 샘플 mock 데이터 기반이며, 다음 단계는 Supabase real 검색 전환
 
 ## 샘플 페이지
 
@@ -52,15 +55,18 @@ data/clean/       정제 데이터
 data/final/       최종 적재/배포용 데이터
 scripts/          데이터 수집·전처리 스크립트
 docs/             PRD, 작업계획, 진행 추적 문서
+supabase/         Supabase SQL 마이그레이션
 src/app/          Next.js App Router 페이지
 src/components/   UI 및 결과 페이지 컴포넌트
 src/lib/mock/     mock 데이터
+src/lib/supabase/ Supabase 클라이언트
 src/lib/types/    타입 보조 폴더
 ```
 
 ## 문서
 
 - docs/01_교육해범_PRD_v0.2.md
+- docs/01_교육해범_PRD_v0.3.md
 - docs/02_2주_작업계획_v2.md
 - docs/03_데이터수집_우선순위.md
 - docs/04_PROGRESS.md

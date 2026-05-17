@@ -19,12 +19,12 @@ export default function SearchPage() {
     <main className="mx-auto flex w-full max-w-5xl flex-1 flex-col px-4 py-10 sm:px-6">
       <section className="mb-8 max-w-2xl space-y-3">
         <div className="inline-flex w-fit items-center rounded-full border border-blue-200 bg-blue-50 px-3 py-1 text-xs font-medium text-blue-700">
-          mock 검색
+          샘플 검색
         </div>
         <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl">학교 검색</h1>
         <p className="text-sm leading-6 text-muted-foreground sm:text-base">
-          학교명을 입력하면 mock 학교 목록에서 일치하는 결과를 바로 확인할 수 있습니다.
-          현재는 샘플 학교 3개만 연결되어 있습니다.
+          Supabase에는 경북 초등학교 474개교가 적재되어 있습니다. 현재 화면은 real 검색 전환 전이라
+          샘플 학교 3개로 결과 페이지 흐름을 먼저 확인합니다.
         </p>
       </section>
 
@@ -48,7 +48,7 @@ export default function SearchPage() {
       <section className="flex-1 space-y-4">
         {!hasQuery && (
           <div className="rounded-2xl border border-dashed bg-muted/40 p-5 text-sm text-muted-foreground">
-            검색어를 입력하지 않으면 현재 연결된 전체 mock 학교 목록을 보여줍니다. 총 {allSchools.length}개 학교가 준비되어 있습니다.
+            검색어를 입력하지 않으면 현재 연결된 샘플 학교 목록을 보여줍니다. 총 {allSchools.length}개 학교가 준비되어 있습니다.
           </div>
         )}
 
@@ -57,7 +57,7 @@ export default function SearchPage() {
             <CardContent className="flex min-h-40 flex-col items-center justify-center gap-2 p-6 text-center">
               <div className="text-base font-medium">검색 결과가 없습니다</div>
               <p className="max-w-md text-sm text-muted-foreground">
-                학교명을 다시 입력해 주세요. 현재 mock 데이터에는 샘플 학교 3개만 포함되어 있습니다.
+                학교명을 다시 입력해 주세요. 현재 화면에는 샘플 학교 3개만 연결되어 있습니다.
               </p>
             </CardContent>
           </Card>

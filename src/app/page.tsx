@@ -106,7 +106,7 @@ export default function HomePage() {
         <div className="mb-6">
           <h2 className="text-2xl font-semibold tracking-tight">샘플 학교로 미리 보기</h2>
           <p className="mt-2 text-sm text-muted-foreground">
-            검색 없이도 현재 결과 페이지 흐름을 체험할 수 있도록 mock 학교 3개를 준비했습니다.
+            Supabase에는 경북 초등학교 474개교가 준비되어 있으며, 현재 결과 화면은 샘플 학교 3개로 먼저 확인할 수 있습니다.
           </p>
         </div>
 
